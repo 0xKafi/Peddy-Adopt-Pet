@@ -18,7 +18,7 @@ const clickedBtn = (idName)=>{
 
         }
         else{
-            btn.classList.add("border-[#1313133a");
+            btn.classList.add("border-[#1313133a]");
             btn.classList.remove("border-[#0e7a81]");
             btn.classList.remove("bg-[#0e7a811a]");
         }
@@ -32,11 +32,12 @@ const petCard =(data)=>{
     <div class="bg-white rounded-lg border-[#1313131a] border-2 p-4 h-full">
         <div class="h-8/10 w-full rounded-md">
             <img class="w-full rounded-md mb-3 h-3/6" src="${data.image}" alt="">
-            <div class="flex flex-col justify-between h-3/6">
-                <p class="font-extrabold text-xl">${data.pet_name}</p>
-                <p class="text-sm text-[#131313B3]" >Breed: ${data.breed}</p>
-                <p class="text-sm text-[#131313B3]" >Birth: ${data.date_of_birth}</p>
-                <p class="text-sm text-[#131313B3]" >Price: ${data.price}</p>
+            <p class="font-extrabold text-xl mb-3">${data.pet_name}</p>
+            <div class="flex flex-col justify-between h-2/6">
+                <p class="text-sm font-semibold text-[#131313B3]" >Breed: ${data.breed}</p>
+                <p class="text-sm font-semibold text-[#131313B3]" >Birth: ${data.date_of_birth}</p>
+                <p class="text-sm font-semibold text-[#131313B3]" >Gender: ${data.gender}</p>
+                <p class="text-sm font-semibold text-[#131313B3]" >Price: ${data.price}$</p>
             </div>
         </div>
         <div class="h-2/10 w-full rounded-md flex justify-between items-end">
@@ -56,6 +57,7 @@ document.getElementById("dog").addEventListener("click", async ()=>{
     clickedBtn("dog");
     const data = await getDataByCategoryName("dog");
     let count = 0;
+    document.getElementById("card-box").innerHTML = "";
     for(let i = 0; i<data.length; i++){
         if(count === 3){
             break;
@@ -67,3 +69,51 @@ document.getElementById("dog").addEventListener("click", async ()=>{
     }
 })
 
+document.getElementById("cat").addEventListener("click", async ()=>{
+    clickedBtn("cat");
+    const data = await getDataByCategoryName("cat");
+    let count = 0;
+    document.getElementById("card-box").innerHTML = "";
+
+    for(let i = 0; i<data.length; i++){
+        if(count === 3){
+            break;
+        }
+        else{
+            petCard(data[i])
+            count++;
+        }
+    }
+})
+document.getElementById("bird").addEventListener("click", async ()=>{
+    clickedBtn("bird");
+    const data = await getDataByCategoryName("bird");
+    let count = 0;
+    document.getElementById("card-box").innerHTML = "";
+
+    for(let i = 0; i<data.length; i++){
+        if(count === 3){
+            break;
+        }
+        else{
+            petCard(data[i])
+            count++;
+        }
+    }
+})
+document.getElementById("rabbit").addEventListener("click", async ()=>{
+    clickedBtn("rabbit");
+    const data = await getDataByCategoryName("rabbit");
+    let count = 0;
+    document.getElementById("card-box").innerHTML = "";
+
+    for(let i = 0; i<data.length; i++){
+        if(count === 3){
+            break;
+        }
+        else{
+            petCard(data[i])
+            count++;
+        }
+    }
+})
