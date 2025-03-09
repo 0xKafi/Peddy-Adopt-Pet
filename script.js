@@ -52,12 +52,24 @@ const petCard =(data)=>{
     `
     document.getElementById("card-box").append(cardBox);
 }
+const noDataFound=()=>{
+    const noDataBox = document.createElement("div");
+    noDataBox.innerHTML = 
+    `    <div class="h-full w-full p-15 flex flex-col justify-center items-center">
+            <img class="h-30 mb-3" src="./images/error.webp" alt="error">
+            <p class="text-xl font-extrabold text-[#131313]">No Information Available</p>
+        </div>
+    `
+    noDataBox.classList.add("col-span-3");
+    document.getElementById("card-box").append(noDataBox);
+}
 
 document.getElementById("dog").addEventListener("click", async ()=>{
     clickedBtn("dog");
     const data = await getDataByCategoryName("dog");
     let count = 0;
     document.getElementById("card-box").innerHTML = "";
+    if(data.length === 0) noDataFound();
     for(let i = 0; i<data.length; i++){
         if(count === 3){
             break;
@@ -74,7 +86,7 @@ document.getElementById("cat").addEventListener("click", async ()=>{
     const data = await getDataByCategoryName("cat");
     let count = 0;
     document.getElementById("card-box").innerHTML = "";
-
+    if(data.length === 0) noDataFound();
     for(let i = 0; i<data.length; i++){
         if(count === 3){
             break;
@@ -90,7 +102,7 @@ document.getElementById("bird").addEventListener("click", async ()=>{
     const data = await getDataByCategoryName("bird");
     let count = 0;
     document.getElementById("card-box").innerHTML = "";
-
+    if(data.length === 0) noDataFound();
     for(let i = 0; i<data.length; i++){
         if(count === 3){
             break;
@@ -106,7 +118,7 @@ document.getElementById("rabbit").addEventListener("click", async ()=>{
     const data = await getDataByCategoryName("rabbit");
     let count = 0;
     document.getElementById("card-box").innerHTML = "";
-
+    if(data.length === 0) noDataFound();
     for(let i = 0; i<data.length; i++){
         if(count === 3){
             break;
